@@ -1,8 +1,12 @@
 \documentclass[12pt]{article}
+% GIT Repository for this file is at:
+% https://github.com/uolphysicsteaching/LaTeX_Exam_Template
+
 \usepackage{fancyhdr,a4wide}
 \usepackage[mathscr]{eucal}
-\usepackage[scaled]{helvet}
-\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+\usepackage{uarial}
+\renewcommand{\familydefault}{\sfdefault}
 \usepackage[T1]{fontenc}
 \usepackage{blindtext}
 \usepackage{graphicx}
@@ -12,6 +16,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 %\usepackage{latexsymb}
+\usepackage{enumitem}
 \usepackage{lastpage}
 \setlength{\headheight}{15.2pt}
 \pagestyle{fancy}
@@ -29,22 +34,31 @@
 \parindent=0mm
 \parskip=2mm
 
-\def\semester{Semester Two}
-\def\session{2020/2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% Module Leader Editable Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\semester{Semester 1}
+\def\session{2021/2022}
+\def\paperno{01} % 09 FOR A MODULE WITH AN OLD SYLLABUS
 \def\code{PHYSXXXX} %PUT CORRECT MODULE CODE HERE
 \def\module{Module Title} %PUT YOPUR MODULE TITLE HERE
+\def\totaltime{2 hours and 30 minutes\ } %ANSWER TIME + UPLOAD TIME
+\def\answertime{2 hours\ } % 1.5 MINUTES PER MARK
+\def\uploadtime{30 minutes}% 30 MINUTES UNLESS LONGER NEEDED
+\def\paperweight{80\%\ }
 
-\lhead[Module Code: \code01]{Module Code: \code01} %Change 01 to 09 if this is a resit of a module that has changed syllabus
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Commands that are useful go here                    %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lhead[Module Code: \code01]{Module Code: \code\paperno} 
 \rfoot[\bf Turn the page over]{\bf Turn the page over}
 \lfoot[Page {\bf \thepage} of {\bf \pageref{LastPage}}]{Page {\bf \thepage} of
 	{\bf \pageref{LastPage}}}
 
-
 \newenvironment{sectionrubric}{\begin{itemize}\itemsep 0em \bf}{\end{itemize}}
 \renewcommand{\headrulewidth}{0pt}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%% Commands that are useful go here                    %%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\del}{\boldsymbol{\nabla}}
 \newcommand{\curl}[1]{\del\times\vec{#1}}
 \renewcommand{\div}[1]{\del\cdot\vec{#1}}
@@ -82,8 +96,19 @@
 \renewcommand{\k}{\uvec{k}}
 \renewcommand{\bar}[1]{\ensuremath{\overline{#1}}}
 \newcommand{\conv}{\ensuremath{\,\circledast\,}}
-
-
+\newcommand{\chem}[1]{\ensuremath{\mathrm{#1}}}
+%
+% Imports an eps file to make a figure
+%
+% \exfig[Filename_prefix]{figure number} imports a file called Filename_prefix-#.eps
+% Default is just Figs-#.eps e.g. \exfig{2} includes "Figs-2.eps"
+%
+\newcommand{\exfig}[2][Figs]{
+	\hspace{0.1cm}\newline
+	\begin{center}
+		\includegraphics[max height=\textheight,max width=\textwidth]{#1-#2}
+	\end{center}
+}
 
 \begin{document}
 	
@@ -98,39 +123,31 @@
 		\end{tabular}
 	}
 	
-	\vspace*{1.5cm}
+	\vspace*{1cm}
 	
 	
-	\textbf{This is an open book assessment.} You may consult any of your own notes.
-	\textbf{You must provide an explanation for all your answers in your own words.}
-	This will vary from a few words to two to three sentences depending on the material. This will be to demonstrate your understanding of the course.
-	
-	\textbf{Do not just repeat answers from your notes without this explanation.}
-	Make sure your method of calculation is clearly shown.  
-	
-	\textbf{If you make use of websites or textbooks to answer specific questions, you must list them at the end of the relevant answer.}
-	
-	\textbf{Assessment information:}
-	
-	\begin{itemize}
-		\item This assessment is made up of \pageref{LastPage} pages.  
-		\item \textbf{You must upload your answers viaGradeScope} to Minerva \textbf{within 48 hours of theassessmentbeing released.} You are advised to allow up to four hours to photograph your answers, and upload  as a PDF  toGradeScope. The upload link will be found in the Assessment section for each module on Minerva and will be available throughout the period of the assessment
-		\item Although the upload is open for the full period of the assessment, you
-		are advised that the assessment should only require 2 hours to complete.
-		\item \textbf{Late submission of answers is not possible. }
-		\item You must answer \textbf{all} of the questions in this assessment.
-		\item You should cross out any work you do not want to be marked. 
-		\item You should indicate the final answer to each question by underlining it. 
-		\item As part of the process of submitted through GradeScope you must identify
-		which questions are answered on which uploaded pages. You must also check
-		that you have uploaded all the work you wish to be marked as part of this
-		assessment and that the answers uploaded are clearly legible. Failure to do
-		so may result in your work not being marked. 
-		\item This is a formal University assessment. \textbf{You must not share or
-			discuss any aspect of this assessment, your answers or the module more
-			generally} with anyone whether a student or not during the period the
-		assessment is open.
-	\end{itemize}
+\textbf{Calculator instructions:}
+\begin{itemize}[itemsep=3pt,topsep=0pt]
+\item You are allowed to use a calculator or a computer calculator in this assessment. 
+\end{itemize}
+\textbf{Dictionary instructions:}
+\begin{itemize}[itemsep=3pt,topsep=0pt]
+	\item You are allowed to use your own dictionary in this assessment and/or the Spell Checker facility on your computer. 
+\end{itemize}
+\textbf{Assessment Information:}
+\begin{itemize}[itemsep=0pt,topsep=0pt]
+\item There are \pageref{LastPage} pages to this online assessment.
+\item You will have \textbf{\totaltime} to complete the assessment and upload your answers to Gradescope.
+\item You are recommended to take a \textbf{maximum of \answertime} within the time available to answer the questions and the remaining \uploadtime to upload your answers. 
+\item This assessment is worth \paperweight of the overall module mark
+\item Answer \textbf{all} of the questions in \textbf{all} of the sections of this paper.
+\item You must submit your answers via Minerva to Gradescope. You will find the link for uploading your work in the Assessment section of the module pages on Minerva in the same folder as you downloaded this paper from.
+\item Please include your Student Identification Number (SID) at the top of each page of your answers. You do not need to include your name.
+\item When submitting your work, you must identify which questions are answered on which uploaded pages. You must also check that you have uploaded all the work you wish to be marked as part of this assessment and that the answers uploaded are clearly legible. Failure to do so may result in your work not being marked.
+\item If there is anything that needs clarification about the questions in this paper, please contact the module leader by email and cc the Physics Exams team \textbf{physicsexams@leeds.ac.uk} and we will respond to you as quickly as possible within normal working hours UK time (9:00-17:00 hours, Monday-Friday). 
+\item If you have any technical difficulties please contact the Physics Exams team at the address above \textbf{before the deadline for submission}.
+\item \textbf{This is a formal University assessment.} You must not share or discuss any aspect of this assessment, your answers or the module more generally with anyone whether a student or not during the period the assessment is open, with the exception of the module leader and Physics exams team.
+\end{itemize}	
 	
 	
 	% IF USING A UNIX MACHINE YOU MIGHT NEED TO CHANGE {LastPage} to {lastpage}
@@ -197,21 +214,18 @@
 	\renewcommand{\theenumi}{A\arabic{enumi}}
 	%%%%%%%%%   Section A questions here                       %%%%%%%%
 	\begin{enumerate}
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\item
-		Q1.  \ptsmk{7}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%You can just write every question as a separate \item and the numbering will be sorted for you
+%You just indicate the number of marks for each question with \ptsmk{xxx}
 		
-		\item
-		Q2 etc
-		\ptsmk{7}
-		
-		
-		
-		
-		
-		
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Section A questions should test the breadth of the student’s knowledge. Each Section A question should be “standalone” in that they do not depend on a previous question in order for students to understand what they need to do. Section A questions should not include unseen problems. 
+\ptsmk{2}
+
+\item Section A questions should be worth between 3 and 8 marks and not have multiple parts to them. Wherever possible ensure that students are required to provide eplanation or interpretation of their answer and/or produce some diagram as this makes it significantly easier to demonstrate collusion.
+\ptsmk{5}
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\end{enumerate}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\newpage    %%%%%%%%      Section B Starts Here %%%%%%%%%%%%%%%%%%%
@@ -232,54 +246,44 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{enumerate}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%\bigskip%%%%%%%%% 
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%%%  CMB
+		% Each section B question is a separate \item. Use \begin{enumerate}...\item...\end{enumerate} for sub parts.
+		% Use \pts{xx} for the number of marks for each sub-part and \ptsmk{xxx} at the end of each question.
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\item 
+		\item Section B questions are intended to probe the depth of understanding. They should be split into parts.
 		\begin{enumerate}
-			
-			\item
-			
-			Part a here
-			\pts{4}
-			
-			
-			\item
-			
-			Part b
-			\pts{8}
-			
-			\item
-			Part c
-			\pts{5}
-			
-			
-			
-			
-			\item 
-			part d
-			\pts{13}
-			
+		\item No part should score more than 1/3 of the total marks for the question. Avoid having a long sequence of [1] or [2] mark parts.
+		\pts{6}
+		\item There should be a progression in the parts of a question for more familiar material through to unseen problems
+		\begin{enumerate}
+			\item Aim for between $1/10$ to $1/4$ of the marks to be unseen material,
+			item Avoid Bookwork questions in online exams and wherever possible ask for interpretation, explanation and/or diagrams.
+			\item Check that the marks add up!
+			\item Check that you have allowed 1.5 minutes per mark
+			\item Ensure that you provide both the question paper and the solutions to the checking paper (or else have the checker do the paper with only the resources available to the students!)
+			\item Make sure you submit both the pdf and the original work/latex of the exam material along with the solutions. This allows any small fixes to be made without bothering you.
 		\end{enumerate}
-		\ptsmk{20}
-		
+		\pts{8}
+		\end{enumerate}
+		\ptsmk{20}		
 		% use spacing to create gaps between questions (or ideally one per page).
 		% either:
 		%\vspace*{1in}
 		% or
 		\newpage
 		
-		\item
+		\item. Start each section B question on a new page.
+		\begin{enumerate}		
+		\item Try to write the questions as simply as possible and avoid convoluted sentence structures. Avoid setting scenarios that include the student answering the problem – i.e. write “A person is in a balloon when….” and not “You are in a balloon when...
+		\pts{6}
+		
+		\item Note the right margin should be ragged and not justified
 		\begin{enumerate}
-			
-			\item
-			
-			Next Q part a etc
-			\pts{20}
+			\item Only use \textbf{bold} for emphasis, do not use \underline{underline} or \textit{italics} or any other textual marks (including in rubric and instructions!)
+			\item Top level parts (e.g. a, b c etc) have a number of marks associated with them give in [ ]. Secondary level parts (i.e. ii, iii etc) do not. % Use the LaTeX commands \pts{x} for doing this!
+			\item The overall question (i.e.B2) has the total number of marks in [ ] with the word ``marks''. % Use \ptsmk{x} for this ! 
+			\item Text should all be Arial font, 12pt. Try to avoid the use of non-standard symbol fonts where possible as they can cause problems if they do not embed in the pdf correctly. Equations do not need to be sans-serif especially if it makes them less clear e.g. confusion between the digit $1$ and the lower case letter $l$. %By default the TeX template is using serif font in equations.
+		\end{enumerate}
+			\pts{8}
 		\end{enumerate}
 		\ptsmk{20}
 		% use spacing to create gaps between questions (or ideally one per page).
